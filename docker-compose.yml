@@ -1,0 +1,21 @@
+web:
+  build: nginx
+  links:
+    - node:node
+    - db:db
+  volumes:
+    - ./nginx/projet:/usr/share/nginx/html
+  ports:
+    - 80:80
+
+node:
+  build: nodejs
+  # links:
+  #   - db:db
+  ports:
+    - 8888:8888
+
+db:
+  build: mysql
+  ports:
+        - 3306:3306
