@@ -1,19 +1,28 @@
 web:
   build: nginx
   links:
-    - node:node
-    - db:db
+    - nodejs_db:nodejs_db
+    - nodejs_tchat:nodejs_tchat
   volumes:
     - ./nginx/projet:/usr/share/nginx/html
   ports:
     - 80:80
 
-node:
-  build: nodejs
+nodejs_db:
+  build: nodejs_db
+  volumes:
+    - ./nodejs_db/projet:/usr/src/app
   # links:
   #   - db:db
+
+nodejs_tchat:
+  build: nodejs_tchat
+  volumes:
+    - ./nodejs_tchat/projet:/usr/src/app
   ports:
-    - 8888:8888
+    - 3000:3000
+  # links:
+  #   - db:db
 
 db:
   build: mysql
