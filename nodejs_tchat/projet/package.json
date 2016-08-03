@@ -1,9 +1,8 @@
 {
-  "name": "ASItchat",
+  "name": "node_tchat",
   "version": "0.0.1",
-  "description": "my first socket.io app",
+  "description": "service de tchat",
   "dependencies": {
-    "express":"^4.10.6",
     "socket.io":"latest"
   }
 }

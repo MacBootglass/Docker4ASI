@@ -3,17 +3,13 @@ web:
   links:
     - nodejs_db:nodejs_db
     - nodejs_tchat:nodejs_tchat
+    - db:db
   volumes:
     - ./nginx/projet:/usr/share/nginx/html
+  volumes_from:
+    - nodejs_tchat
   ports:
     - 80:80
-
-nodejs_db:
-  build: nodejs_db
-  volumes:
-    - ./nodejs_db/projet:/usr/src/app
-  # links:
-  #   - db:db
 
 nodejs_tchat:
   build: nodejs_tchat
@@ -21,10 +17,21 @@ nodejs_tchat:
     - ./nodejs_tchat/projet:/usr/src/app
   ports:
     - 3000:3000
-  # links:
-  #   - db:db
+  links:
+    - nodejs_db:nodejs_db
+
+nodejs_db:
+  build: nodejs_db
+  volumes:
+    - ./nodejs_db/projet:/usr/src/app
+  ports:
+    - 3001:3001
+  links:
+    - db:db
 
 db:
   build: mysql
   ports:
         - 3306:3306
+  volumes:
+    - ./mysql/projet:/home

@@ -3,4 +3,5 @@ MAINTAINER thibault.theologien@insa-rouen.fr
 RUN mkdir -p /usr/src/app
 VOLUME /usr/src/app
 WORKDIR /usr/src/app
-CMD npm install ; nodemon app/index.js
+EXPOSE 3001
+CMD npm install ; nodemon index.js
