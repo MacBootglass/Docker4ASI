@@ -7,7 +7,7 @@ create table if not exists USERS (
   parrain boolean not null,
   phrase tinytext,
   img blob,
-  password varchar(20) 
+  password varchar(20)
 );
 
 create table if not exists CONV (
@@ -17,3 +17,11 @@ create table if not exists CONV (
   mom datetime not null,
   msg text not null
 );
+
+create table if not exists TINDER (
+  auth varchar(15) references USERS,
+  dest varchar(15) references USERS,
+  choix varchar(8) not null,
+  check (choix in ('like', 'dislike')),
+  primary key (auth, dest)
+)

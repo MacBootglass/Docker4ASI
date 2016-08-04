@@ -28,10 +28,11 @@ io.on('connection', function(socket){
     });
   });
 
-  socket.on('getUsers', function(){
 
+  // OBTENTION DES AUTRES UTILISATEURS
+  socket.on('getUsers', function(){
     // ADD CHECK PARRAIN
-    connection.query('select nom, prenom, pseudo, naissance, phrase from USERS where id != "' + socket.userId + '";', function(err, rows, fields) {
+    connection.query('select id, nom, prenom, pseudo, naissance, phrase from USERS where id != "' + socket.userId + '";', function(err, rows, fields) {
       if (!err)
         socket.emit("otherUsers", rows);
       else
@@ -39,6 +40,24 @@ io.on('connection', function(socket){
     });
   });
 
+
+  // LIKE / DISLIKE TINDER
+  // A REVOIR -> SELECT PREVENTIF
+  socket.on('tinder', function(user, choix){
+    if (choix === "like" || choix === "dislike")
+      connection.query('insert into TINDER values ("' + socket.userId + '", "' + user + '", "' + choix + '" );', function(err, rows, fields) {
+        if (!err)
+          socket.emit(choix, user); //On ajoute à la liste des utilisateurs à contacter sur le client
+        else if (err.code === "ER_DUP_ENTRY")
+          connection.query('update TINDER set choix = "' + choix + '" where auth = "' + socket.userId + '" and dest = "' + user + '";', function(err, rows, fields) {
+            if (!err)
+              socket.emit(choix, user);
+            else {
+              socket.emit("error", "Erreur lors de l'accès à la table TINDER");
+            }
+          });
+      });
+  });
 
 
   // RECUPERATION DES MESSAGES
