@@ -1,6 +1,6 @@
 insert into USERS values ("gbaert",		    "baert",			      "gaetan",			  "le mi-temps",                 NULL, true, NULL, NULL, "user");
 insert into USERS values ("rblin",	      "blin",			        "rachel",			  "la thug !",                   NULL, true, NULL, NULL, "user");
-insert into USERS values ("jbonneveau",   "bonneveau",			  "jean-baptiste"	"chewie",                      NULL, true, NULL, NULL, "user");
+insert into USERS values ("jbonneveau",   "bonneveau",			  "jean-baptiste","chewie",                      NULL, true, NULL, NULL, "user");
 insert into USERS values ("gboulier",		  "boulier",			    "guillaume",		"boulier !",                   NULL, true, NULL, NULL, "user");
 insert into USERS values ("gboutet",		  "boutet",			      "guillaume",		"bouboute",                    NULL, true, NULL, NULL, "user");
 insert into USERS values ("ncalbrix",		  "calbrix",			    "noé",			    "le p'tit gars !",             NULL, true, NULL, NULL, "user");

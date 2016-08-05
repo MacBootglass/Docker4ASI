@@ -20,6 +20,14 @@ if [ $# -ge 1 ]; then
     docker-compose up -d
   fi
 
+  if [ $1 == "connectDB" ]; then
+    docker exec -it docker4asi_db_1 bash
+  fi
+
+  if [ $1 == "connectWeb" ]; then
+    docker exec -it docker4asi_web_1 bash
+  fi
+
   if [ $1 == "compile" ]; then
     if [ ! -d "nginx/data/ressources/css" ]; then
       mkdir nginx/data/ressources/css
