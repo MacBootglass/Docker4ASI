@@ -1,20 +1,31 @@
 function init() {
-  // element.requestFullscreen();
-  // screen.orientation.lock("portrait");
-  // screen.lockOrientation;
-  // screen.orientation.lock;
-  // if( ! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  // alert("yeah")
-  // }
-  var currentUser;
-
   $('#modalLogin').modal();
+
+  // $('#modalProfil').modal();
 
   $('#currentProfile').slick({
     accessibility:true,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false
+  });
+
+  $('#currentProfile').click(function() {
+    var user = userList[$('#currentProfile').slick('slickCurrentSlide')];
+    if (user.naissance != null)
+      $("#ageProfil").text(20);           //A REVOIR -> Faire en fonction de la date de naissance
+
+    if (user.pseudo == null || user.pseudo === "")
+      $("#pseudoProfil").text(user.prenom);
+    else
+      $("#pseudoProfil").text(user.pseudo);
+
+    if (user.phrase == null || user.phrase === "")
+      $("#descriptionProfil").text("Je crois que j'ai rien à dire");
+    else
+      $("#descriptionProfil").text(user.phrase);
+
+    $('#modalProfil').modal();
   });
 
   $('#razFormConnexion').click(function() {
@@ -24,14 +35,17 @@ function init() {
     connectDbApp($("#idConnexion")[0].value, $("#mdpConnexion")[0].value);
   });
 
-  $('#choiceLike').click(function() {
+  $('.choiceLike').click(function() {
     tinder($('#user' + $('#currentProfile').slick('slickCurrentSlide')).data("userid"), "like");
   });
 
-  $('#choiceDislike').click(function() {
+  $('.choiceDislike').click(function() {
     tinder($('#user' + $('#currentProfile').slick('slickCurrentSlide')).data("userid"), "dislike");
   });
 
+  $('#closeProfile').click(function() {
+    $('#modalProfil').modal('hide');
+  });
 }
 
 $(document).ready(init);

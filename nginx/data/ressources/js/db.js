@@ -1,5 +1,5 @@
 var socketDB = io.connect('http://'+host+':3001');
-var likeList = new Array();
+var userList;
 
 socketDB.on("auth", function(msg) {
   if (msg == true) {
@@ -13,6 +13,7 @@ socketDB.on("error", function(msg){
 });
 
 socketDB.on("otherUsers", function(result){
+  userList = result;
   var add;
   for (i = 0; i < result.length; i++) {
     add = '<div id="user' + i + '" data-userid="' + result[i].id + '">' +
