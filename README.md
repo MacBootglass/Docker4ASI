@@ -13,6 +13,7 @@ Configuration des containers docker pour le projet ASI (Nginx + NodeJS + MySQL)
   * bash cmd.sh connectDB -> se connecter au container de la base de données
   * bash cmd.sh connectWeb -> se connecter au container nginx
   * bash cmd.sh compile -> générer le css du projet
+  * bash cmd.sh all -> execute toutes les commandes necessaires pour lancer le projet
 * par défaut, le port utilisé par le serveur nginx et le 80
 * les ports 3000 et 3001 sont utilisés par les applications nodejs
 * le port 3306 est utilisé pour mysql
