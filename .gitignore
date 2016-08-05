@@ -1,3 +1,3 @@
-nginx/projet
-nodejs_db/projet/node_modules
-nodejs_tchat/projet/node_modules
+nginx/data/ressources/css
+nodejs_db/data/node_modules
+nodejs_tchat/data/node_modules
