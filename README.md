@@ -4,6 +4,7 @@ Configuration des containers docker pour le projet ASI (Nginx + NodeJS + MySQL)
 # Prérequis:
 * docker -> https://docs.docker.com/engine/installation/
 * docker-compose -> https://docs.docker.com/compose/install/
+* sass -> http://sass-lang.com/install
 * utiliser les commandes suivantes sont disponibles pour gérer le projet:
   * bash cmd.sh stop -> stop tous les containers
   * bash cmd.sh clean -> stop et supprime tous les containers
