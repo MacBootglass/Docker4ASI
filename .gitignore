@@ -1,3 +1,4 @@
 nginx/data/ressources/css
 nodejs_db/data/node_modules
 nodejs_tchat/data/node_modules
+.sass-cache

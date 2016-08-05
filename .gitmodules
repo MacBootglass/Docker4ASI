@@ -1,0 +1,9 @@
+[submodule "nginx/data/librairies/bootstrap"]
+	path = nginx/data/librairies/bootstrap
+	url = https://github.com/twbs/bootstrap.git
+[submodule "nginx/data/librairies/slick"]
+	path = nginx/data/librairies/slick
+	url = https://github.com/kenwheeler/slick.git
+[submodule "nginx/data/librairies/Font-Awesome"]
+	path = nginx/data/librairies/Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git

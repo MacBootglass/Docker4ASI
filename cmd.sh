@@ -21,11 +21,11 @@ if [ $# -ge 1 ]; then
   fi
 
   if [ $1 == "compile" ]; then
-    if [ ! -d "nginx/ressources/css" ]; then
-      mkdir nginx/ressources/css
+    if [ ! -d "nginx/data/ressources/css" ]; then
+      mkdir nginx/data/ressources/css
     fi
 
-    sass nginx/ressources/scss/index.scss nginx/ressources/css/index.css
+    sass nginx/data/ressources/scss/index.scss nginx/data/ressources/css/index.css
   fi
 
   if [ $1 == "all" ]; then
