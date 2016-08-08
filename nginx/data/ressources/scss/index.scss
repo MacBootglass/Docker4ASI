@@ -1,11 +1,13 @@
 @mixin setPadding() {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: $padding;
+  padding-bottom: $padding;
 }
 
 $red: #F03428;
 $gray: #aaa;
 $gray_hover: #555;
+$dimImgMsg: 50px;
+$padding: 10px;
 
 html {
   padding:0px;
@@ -128,8 +130,60 @@ html {
             }
           }
         }
-      }
 
+        #messages {
+          height: 100%;
+
+          .msgList {
+            height: 100%;
+            overflow: auto;
+
+            .msgUser {
+              @include setPadding();
+              height: $dimImgMsg + 2*$padding;
+              border-bottom-style: solid;
+              border-bottom-width: 1px;
+              border-bottom-color: $gray;
+
+              .msgImg {
+                width: $dimImgMsg + 2*$padding;
+                float: left;
+                text-align: center;
+
+                img {
+                  border-radius: $dimImgMsg;
+                  width: $dimImgMsg;
+                  height: $dimImgMsg;
+                }
+              }
+
+              .msgImg:after {
+                clear:both;
+              }
+
+              .msgInfo {
+                width: auto;
+
+                div {
+                  .msgPseudo {
+                    font-size: 1.25em;
+                    font-weight: bold;
+                  }
+
+                  .msgContent {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+
+            .msgUser:hover {
+              background-color: $gray;
+              cursor:pointer;
+            }
+          }
+        }
+      }
     }
 
 

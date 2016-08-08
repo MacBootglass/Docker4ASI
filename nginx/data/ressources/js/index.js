@@ -1,5 +1,5 @@
 function init() {
-  $('#modalLogin').modal();
+  // $('#modalLogin').modal();
 
   // $('#modalProfil').modal();
 
