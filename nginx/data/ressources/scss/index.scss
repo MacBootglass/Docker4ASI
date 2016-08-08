@@ -186,7 +186,6 @@ html {
       }
     }
 
-
     #modalLogin {
       background: rgba(240, 52, 40, 0.75);;
 
@@ -233,7 +232,6 @@ html {
         }
       }
     }
-
 
     #modalProfil {
       height: 100%;
@@ -306,6 +304,77 @@ html {
                   color: $gray_hover;
                 }
               }
+            }
+          }
+        }
+      }
+    }
+
+    #modalTchat {
+      // height: 100%;
+
+      .modal-dialog {
+        // height: 100%;
+        margin-top :0px;
+        margin-bottom: 0px;
+        @include setPadding();
+
+        .modal-content {
+          height: 100%;
+
+          .modal-header {
+            height: $padding*2 + $dimImgMsg;
+            padding: $padding;
+
+            span {
+              font-size: 1.25em;
+              font-weight: bold;
+            }
+
+            img {
+              margin-right: $padding;
+              width: $dimImgMsg;
+              height: $dimImgMsg;
+              border-radius: $dimImgMsg;
+            }
+          }
+
+          .modal-body {
+            padding: $padding;
+            min-height: 200px;
+            max-height: 400px;
+            overflow: auto;
+
+            div {
+              // max-width: 75%;
+              width: 100%;
+              font-size: 1.25em;
+              border-radius: 5px;
+              padding: 5px;
+
+            }
+
+            div:after {
+              clear:both;
+            }
+
+            .msgAuth {
+              text-align: right;
+              color: $gray;
+            }
+
+
+            .msgDest {
+              text-align: left;
+            }
+          }
+
+          .modal-footer {
+            padding: $padding;
+
+            input[type="text"] {
+            float: left;
+              width: 80%;
             }
           }
         }

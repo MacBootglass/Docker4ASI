@@ -46,6 +46,14 @@ function init() {
   $('#closeProfile').click(function() {
     $('#modalProfil').modal('hide');
   });
+
+  $(".msgUser").click(function() {
+    $('#modalTchat').modal();
+  });
+
+  $('#modalTchat').on('shown.bs.modal', function (e) {
+    $("#modalConv").scrollTop($("#modalConv")[0].scrollHeight);
+  });
 }
 
 $(document).ready(init);
