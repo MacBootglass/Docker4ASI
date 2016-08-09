@@ -72,5 +72,11 @@ io.on('connection', function(socket){
   });
 });
 
+
+
+// RECUPERATION DES MESSAGES
+//  select dest, mom, msg from CONV conv where auth="ttheologien" and id in (select max(id) from CONV where dest=conv.dest);
+
+
 io.listen(3001);
 // connection.end();

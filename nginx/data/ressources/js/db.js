@@ -58,7 +58,6 @@ socketDB.on("getUsers", function(result){
 });
 
 socketDB.on("recoverMessages", function(rows) {
-  // console.log(rows);
   for (var i = 0; i < rows.length; i++)
     if (currentUserConv === rows[i].dest)
       $("#convModalTchat").append('<div class="msgAuth"><div>' + rows[i].msg + '</div></div>');
