@@ -22,11 +22,12 @@ create table if not exists CONV (
 );
 
 create table if not exists TINDER (
-  auth varchar(15),
-  dest varchar(15),
+  auth varchar(15) references USERS(id),
+  dest varchar(15) references USERS(id),
   choix varchar(8) not null,
   check (choix in ('like', 'dislike')),
-  primary key (auth, dest),
-  foreign key (auth) references USERS(id),
-  foreign key (dest) references USERS(id)
+  primary key (auth, dest)
 )
+
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
