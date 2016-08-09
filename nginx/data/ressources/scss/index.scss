@@ -134,9 +134,10 @@ html {
         #messages {
           height: 100%;
 
-          .msgList {
+          #msgList {
             height: 100%;
             overflow: auto;
+            // visibility: hidden;
 
             .msgUser {
               @include setPadding();
@@ -344,28 +345,45 @@ html {
             min-height: 200px;
             max-height: 400px;
             overflow: auto;
+            width: 100%;
 
             div {
-              // max-width: 75%;
-              width: 100%;
-              font-size: 1.25em;
-              border-radius: 5px;
-              padding: 5px;
-
-            }
-
-            div:after {
-              clear:both;
+              // width:auto;
+              width:75%;
+              font-size: 1.1em;
+              margin-bottom: $padding;
             }
 
             .msgAuth {
               text-align: right;
-              color: $gray;
-            }
+              float:right;
 
+              div {
+                float:right;
+                width:auto;
+                background-color: $red;
+                padding-left: $padding;
+                padding-right: $padding;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: $padding;
+              }
+            }
 
             .msgDest {
               text-align: left;
+              float:left;
+
+              div {
+                float:left;
+                width:auto;
+                background-color: $gray;
+                padding-left: $padding;
+                padding-right: $padding;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: $padding;
+              }
             }
           }
 

@@ -3,6 +3,8 @@ function init() {
 
   // $('#modalProfil').modal();
 
+  // $('#modalTchat').modal();
+
   $('#currentProfile').slick({
     accessibility:true,
     slidesToShow: 1,
@@ -47,12 +49,8 @@ function init() {
     $('#modalProfil').modal('hide');
   });
 
-  $(".msgUser").click(function() {
-    $('#modalTchat').modal();
-  });
-
   $('#modalTchat').on('shown.bs.modal', function (e) {
-    $("#modalConv").scrollTop($("#modalConv")[0].scrollHeight);
+    $("#convModalTchat").scrollTop($("#convModalTchat")[0].scrollHeight);
   });
 }
 

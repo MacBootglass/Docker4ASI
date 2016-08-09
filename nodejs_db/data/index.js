@@ -34,7 +34,7 @@ io.on('connection', function(socket){
     // ADD CHECK PARRAIN
     connection.query('select id, nom, prenom, pseudo, naissance, phrase from USERS where id != "' + socket.userId + '";', function(err, rows, fields) {
       if (!err)
-        socket.emit("otherUsers", rows);
+        socket.emit("getUsers", rows);
       else
         socket.emit("error", "Impossible d'obtenir les autres utilisateurs");
     });
@@ -53,7 +53,7 @@ io.on('connection', function(socket){
             if (!err)
               socket.emit(choix, user);
             else {
-              socket.emit("error", "Erreur lors de l'accès à la table TINDER");
+              socket.emit('error', "Erreur lors de l'accès à la table TINDER");
             }
           });
       });
@@ -61,7 +61,15 @@ io.on('connection', function(socket){
 
 
   // RECUPERATION DES MESSAGES
-
+  socket.on('recoverMessages', function(dest) {
+    connection.query('select * from CONV where (auth = "' + socket.userId + '" and dest = "' + dest + '") or (auth = "' + dest + '" and dest = "' + socket.userId + '") order by mom;', function(err, rows, fields) {
+      if (!err)
+        socket.emit('recoverMessages', rows);
+      else {
+        socket.emit('error', 'Impossible de récupérer les conversations');
+      }
+    });
+  });
 });
 
 io.listen(3001);

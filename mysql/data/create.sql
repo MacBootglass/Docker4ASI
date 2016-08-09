@@ -11,17 +11,22 @@ create table if not exists USERS (
 );
 
 create table if not exists CONV (
-  id integer auto_increment primary key,
-  auth varchar(15) references USERS,
-  dest varchar(15) references USERS,
+  id integer auto_increment,
+  auth varchar(15),
+  dest varchar(15),
   mom datetime not null,
-  msg text not null
+  msg text not null,
+  primary key (id),
+  foreign key (auth) references USERS(id),
+  foreign key (dest) references USERS(id)
 );
 
 create table if not exists TINDER (
-  auth varchar(15) references USERS,
-  dest varchar(15) references USERS,
+  auth varchar(15),
+  dest varchar(15),
   choix varchar(8) not null,
   check (choix in ('like', 'dislike')),
-  primary key (auth, dest)
+  primary key (auth, dest),
+  foreign key (auth) references USERS(id),
+  foreign key (dest) references USERS(id)
 )
