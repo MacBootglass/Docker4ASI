@@ -90,11 +90,5 @@ io.on('connection', function(socket){
   });
 });
 
-
-
-// select dest user, mom, msg from CONV conv where auth="ttheologien" and id in (select max(id) from CONV where dest=conv.dest);
-// select auth user, mom, msg from CONV conv where dest="ttheologien" and id in (select max(id) from CONV where auth=conv.auth);
-
-
 io.listen(3001);
 // connection.end();

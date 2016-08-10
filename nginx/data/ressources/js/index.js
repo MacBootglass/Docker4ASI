@@ -12,6 +12,14 @@ function init() {
     arrows: false
   });
 
+
+  $('#startConv').click(function() {
+    var currentUser = $('#currentProfile').slick('slickCurrentSlide'));
+    $('#modalProfil').modal('hide');
+    $('#modalTchat').modal();
+  });
+
+
   $('#currentProfile').click(function() {
     var user = userList[$('#currentProfile').slick('slickCurrentSlide')];
     if (user.naissance != null)
@@ -30,24 +38,30 @@ function init() {
     $('#modalProfil').modal();
   });
 
+
   $('#razFormConnexion').click(function() {
   });
+
 
   $('#confirmFormConnexion').click(function() {
     connectDbApp($("#idConnexion")[0].value, $("#mdpConnexion")[0].value);
   });
 
+
   $('.choiceLike').click(function() {
     tinder($('#user' + $('#currentProfile').slick('slickCurrentSlide')).data("userid"), "like");
   });
+
 
   $('.choiceDislike').click(function() {
     tinder($('#user' + $('#currentProfile').slick('slickCurrentSlide')).data("userid"), "dislike");
   });
 
+
   $('#closeProfile').click(function() {
     $('#modalProfil').modal('hide');
   });
+
 
   $('#modalTchat').on('shown.bs.modal', function (e) {
     $("#convModalTchat").scrollTop($("#convModalTchat")[0].scrollHeight);
