@@ -7,3 +7,6 @@
 [submodule "nginx/data/librairies/Font-Awesome"]
 	path = nginx/data/librairies/Font-Awesome
 	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "nginx/data/librairies/Datejs"]
+	path = nginx/data/librairies/Datejs
+	url = https://github.com/datejs/Datejs.git

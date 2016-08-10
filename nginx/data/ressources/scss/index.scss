@@ -137,7 +137,6 @@ html {
           #msgList {
             height: 100%;
             overflow: auto;
-            // visibility: hidden;
 
             .msgUser {
               @include setPadding();
@@ -145,6 +144,7 @@ html {
               border-bottom-style: solid;
               border-bottom-width: 1px;
               border-bottom-color: $gray;
+              display: none;
 
               .msgImg {
                 width: $dimImgMsg + 2*$padding;

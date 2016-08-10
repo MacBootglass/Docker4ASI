@@ -2,10 +2,12 @@ var socketDB = io.connect('http://'+host+':3001');
 var userList;
 var currentUserConv;
 
+
 socketDB.on("auth", function(msg) {
   if (msg == true) {
     $('#modalLogin').modal('hide');
     getUsers();
+    recoverExistConv();
   }
 });
 
@@ -53,11 +55,13 @@ socketDB.on("getUsers", function(result){
     // var pseudo = userList[$($('.msgUser[data-dest="' + $(this).data('dest') + '"]')[0]).data("num")].pseudo;
     currentUserConv = $(this).data('dest');
     $("#userModalTchat").text($('.msgUser[data-dest="' + currentUserConv + '"] > .msgInfo > div > .msgPseudo').text());
-    socketDB.emit("recoverMessages", currentUserConv);
+    socketDB.emit("recoverConversation", currentUserConv);
   });
 });
 
-socketDB.on("recoverMessages", function(rows) {
+
+socketDB.on("recoverConversation", function(rows) {
+  $("#convModalTchat").text("");
   for (var i = 0; i < rows.length; i++)
     if (currentUserConv === rows[i].dest)
       $("#convModalTchat").append('<div class="msgAuth"><div>' + rows[i].msg + '</div></div>');
@@ -66,27 +70,71 @@ socketDB.on("recoverMessages", function(rows) {
   $('#modalTchat').modal();
 });
 
+
 socketDB.on("error", function(msg){
   alert(msg);
 });
+
 
 socketDB.on("like", function(user) {
   console.log(user);
 });
 
+
 socketDB.on("dislike", function(user) {
   console.log(user);
 });
+
+
+socketDB.on("recoverExistConv", function(env, rec) {
+  console.log(env);
+  console.log(rec);
+  var conv = new Array();
+  var dateEnv;
+  var dateRec;
+
+  for (var i = 0; i < env.length; i++)
+    conv[env[i].user] = env[i];
+
+  for (var i = 0; i < rec.length; i++)
+    if (conv[rec[i].user] != undefined) {
+
+      dateEnv = conv[rec[i].user].mom;
+      dateEnv = dateEnv.substring(0, dateEnv.length - 5);
+      dateRec = rec[i].mom;
+      dateRec = dateRec.substring(0, dateRec.length - 5);
+
+      if (Date.compare(Date.parse(dateEnv), Date.parse(dateRec)) <= -1)
+        conv[env[i].user] = rec[i];
+    }
+
+  for (var x in conv) {
+    var shortMsg = conv[x].msg;
+    if (shortMsg.length > 25)
+      shortMsg = shortMsg.substring(0, 22) + "...";
+    $('.msgUser[data-dest="' + x + '"] > .msgInfo > div > .msgContent').text(shortMsg);
+    $('.msgUser[data-dest="' + x + '"]').show();
+
+  }
+});
+
 
 function connectDbApp(id, mdp) {
   userId = id;
   socketDB.emit("auth", id, mdp);
 }
 
+
 function getUsers() {
   socketDB.emit("getUsers");
 }
 
+
 function tinder(user, choix) {
   socketDB.emit("tinder", user, choix);
+}
+
+
+function recoverExistConv() {
+  socketDB.emit("recoverExistConv");
 }
