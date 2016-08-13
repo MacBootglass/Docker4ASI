@@ -14,7 +14,7 @@ function init() {
 
 
   $('#startConv').click(function() {
-    var currentUser = $('#currentProfile').slick('slickCurrentSlide'));
+    var currentUser = $('#currentProfile').slick('slickCurrentSlide');
     $('#modalProfil').modal('hide');
     $('#modalTchat').modal();
   });
